@@ -7,6 +7,7 @@ Group:		Libraries
 Source0:	https://downloads.sourceforge.net/project/elfio/ELFIO-sources/ELFIO-%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	d370c4e4ff432626dba661f9a30ff2f1
 URL:		http://elfio.sourceforge.net/
+BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -34,6 +35,8 @@ developing programs using the elfio library.
 rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+%{__rm} $RPM_BUILD_ROOT%{_bindir}/{tutorial,write_obj,writer}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
